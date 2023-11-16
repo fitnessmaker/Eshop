@@ -1,0 +1,72 @@
+{% extends 'Main/base.html' %}
+
+
+{% block content %}
+
+
+
+           <div class="container">
+            <h2>All Tickets</h2>
+            <div class="row">
+            <div class="col-sm-12">
+            <div class="card card-table">
+            <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-hover table-center mb-0 datatable">
+            <thead>
+            <tr>
+            <th>Ticket ID</th>
+            <th>Title</th>
+            <th>Created On</th>
+            <th>Assigned To</th>
+
+            <th>Status</th>
+             <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for ticket in tickets %}
+            <tr>
+            <td><small>{{ticket.ticket_number}}</small></td>
+            <td>
+
+            <a><small>{{ticket.title}}</small></a>
+
+            </td>
+            <td><small>{{ticket.date_created}}</small></td>
+            {% if ticket.assigned_to %}
+            <td><small>{{ticket.assigned_to}}</small></td>
+             {% else %}
+             <td><small>Not Assigned</small></td>
+             {% endif %}
+
+            <td>
+            {% if ticket.ticket_status == 'Active' %}
+            <span class="badge badge-success">Active</span>
+            {% elif ticket.ticket_status == 'Pending' %}
+            <span class="badge badge-warning">Pending</span>
+            {% elif ticket.ticket_status == 'Completed' %}
+            <span class="badge badge-secondary">Completed</span>
+             {% endif %}
+            </td>
+             <td><small><a href="{% url 'ticket-details' ticket.pk  %}">View Details</a></small></td>
+            <td class="text-right">
+            <!--------->
+            </td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            </div>
+
+
+{% endblock %}

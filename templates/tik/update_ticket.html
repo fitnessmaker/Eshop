@@ -1,0 +1,57 @@
+{% extends 'Main/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+            <div class="container">
+                        <div class="login-register-tab-list nav">
+                                    <a class="active" data-bs-toggle="tab" href="#lg1">
+                                    <h4>Update Ticket</h4>
+                                    </a>
+                        </div>
+
+                                        <div class="login-register-form">
+                                           <form  method="post">
+                                                {% csrf_token %}
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label"><b>Issue Ticket</b></label>
+                                                    {% render_field form.title class="form-control" %}
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail2" class="form-label"><b>Contact Number</b></label>
+                                                    {% render_field form.contacts class="form-control" %}
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label"><b>Description</b></label>
+                                                    {% render_field form.description class="form-control" %}
+                                                </div>
+                                             <div class="row">
+                                                 <div class="col">
+                                                     <label for="exampleInputEmail3" class="form-label" ><b>Customer Items</b></label>
+                                                         <option value="Bag" name="Bag">Bag</option>
+                                                       {% render_field form.Bag class="form-control" %}
+                                                 </div>
+
+                                                 <div class="col">
+                                                     <label for="exampleInputEmail4" class="form-label" ></label>
+                                                     <option value="Battery" name="Battery">Battery</option>
+                                                       {% render_field form.Battery class="form-control" %}
+
+                                                 </div>
+
+                                                 <div class="col">
+                                                     <label for="exampleInputEmail5" class="form-label" ></label>
+                                                     <option value="Charger" name="Charger">Charger</option>
+                                                       {% render_field form.Charger class="form-control" %}
+                                                 </div>
+
+                                           </div>
+                                                <br>
+                                                 <button class="btn btn-primary" style="height:30px;width:150px; padding:1px 1px;" type="submit">submit</button>
+
+                                            </form>
+                                        </div>
+</div>
+
+{% endblock %}
